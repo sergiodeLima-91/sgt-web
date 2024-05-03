@@ -1,9 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
-
+import logo from './logo.png'
 function App() {
   return (
-    <div className="App">
+    <div>
+      <img src={logo}/>
       <h1>Sistema Gerador de Termos</h1>
     </div>
   );
