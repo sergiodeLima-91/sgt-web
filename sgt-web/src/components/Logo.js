@@ -1,7 +1,9 @@
-function Logo(img) {
+import logo from './logo.png'
+
+function Logo(w, h) {
     return (
         <div>
-            <img src={img.logo}/>
+        <img src={logo} style={{width: `${w.width}`, height:`${h.height}`}}/>
         </div>
     )
 }
