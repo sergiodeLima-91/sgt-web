@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import logo from './logo.png'
+import logo from './components/logo.png'
 import jsPDF from 'jspdf';
 
 function App() {
