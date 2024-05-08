@@ -1,61 +1,35 @@
 import React, { useState } from 'react';
+import jsPDF from 'jspdf';
 
 function Accession() {
-    const [showOptions, setShowOptions] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('');
 
-    const options = [
-        'Adesão',
-        'Encaminhamento',
-        'Declaração',
-        'Cancelamento',
-        'Outro',
-  ];
+  const [companyName, setCompanyName] = useState('');
+  
+  const gerarPDF = (e) => {
+    e.preventDefault();
+    const doc = new jsPDF();
+    doc.text(`NOME DA EMPRESA: ${companyName}`, 20,20)
 
-    const handleArrowClick = () => {
-        setShowOptions(!showOptions);
-    };
-
-    const handleOptionSelect = (option) => {
-        setSelectedOption(option);
-        setShowOptions(false);
-    };
+    return doc.save('termo-de-adesao.pdf')
+    }
 
     return (
-        <div className="select-container">  
-        <div
-          className={`select-arrow ${showOptions ? 'open' : ''}`}
-          onClick={handleArrowClick}
-        >
-        </div>
-        {/* Formulary */}
-        <select
-          className={`term-select ${showOptions ? 'open' : ''}`}
-          value={selectedOption}
-          onChange={(e) => handleOptionSelect(e.target.value)}
-        >
-          <option value="" disable hidden>O que você deseja fazer hoje?</option>
-          {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        {selectedOption && (
-        <form 
-        style={{
-            width: '350px',
-            margin:'20px',
-            textAlign:'left',
-            display:'flex',
-            flexDirection:'column'
-        }}>
-          <input type='string' name='name'placeholder='NOME'style={{padding:'5px', margin:'10px'}}/>
-          <input type='number' name='cpf-cnpj'placeholder='CPF/CNPJ'style={{padding:'5px', margin:'10px'}}/>
-          <input type='string' name='streetch'placeholder='RUA'style={{padding:'5px', margin:'10px'}}/>
-          <input type='number' name='numero'placeholder='NÚMERO'style={{padding:'5px', margin:'10px'}}/>
-        </form>
-      )}
+        <div className="select-container">        
+          <form
+          name='form' 
+          style={{
+              width: '350px',
+              margin:'20px',
+              textAlign:'left',
+              display:'flex',
+              flexDirection:'column'
+          }}>
+            <input type='string' name='companyName'placeholder='NOME'value={companyName} onChange={(e) => setCompanyName(e.target.value)} style={{padding:'5px', margin:'10px'}}/>
+            <input type='number' name='cpf-cnpj'placeholder='CPF/CNPJ'style={{padding:'5px', margin:'10px'}}/>
+            <input type='string' name='streetch'placeholder='RUA'style={{padding:'5px', margin:'10px'}}/>
+            <input type='number' name='numero'placeholder='NÚMERO'style={{padding:'5px', margin:'10px'}}/>
+            <button onClick={gerarPDF}>Baixar Termo</button>            
+          </form>
       </div>
 )}
 
