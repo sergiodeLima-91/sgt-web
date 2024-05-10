@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Logo from './components/Logo'
 import Accession from './components/forms/Accession';
 import jsPDF from 'jspdf';
-import 'megadraft/dist/css/megadraft.css';
 
 function App() {
   const [showOptions, setShowOptions] = useState(false);
