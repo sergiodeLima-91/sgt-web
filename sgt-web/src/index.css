@@ -17,3 +17,7 @@ code {
 .term-select {
   cursor: pointer;
 }
+
+.ql-editor {
+  min-height: 300px;
+}
