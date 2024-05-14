@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Logo from './components/Logo'
 import Accession from './components/forms/Accession';
 import jsPDF from 'jspdf';
+import '../src/index.css'
 
 function App() {
   const [showOptions, setShowOptions] = useState(false);

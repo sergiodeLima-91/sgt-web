@@ -34,7 +34,7 @@ function Accession() {
             <ReactQuill 
             value={editorContent} 
             onChange={setEditorContent}
-            placeholder='Dados do termo' 
+            placeholder='Dados do termo'
             />
 
             <input type='string' name='companyName'placeholder='NOME DA EMPRESA'value={companyName} onChange={(e) => setCompanyName(e.target.value)} style={{padding:'5px', margin:'10px'}}/>
