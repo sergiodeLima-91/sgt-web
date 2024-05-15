@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import { Page, Text, View, Document, StyleSheet } from '@mikecousins/react-pdf';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import { EditorState } from 'draft-js';
 
 
 function Accession() {    
   // Estado do editor de texto:
-  const [editorContent, setEditorContent] = useState('');
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
   // Estado do formulário:
   const [companyName, setCompanyName] = useState('');
   
@@ -31,10 +32,9 @@ function Accession() {
               flexDirection:'column'
           }}>
             {/* Editor de texto vai aqui */}          
-            <ReactQuill 
-            value={editorContent} 
-            onChange={setEditorContent}
-            placeholder='Dados do termo'
+            <Editor 
+              editorState={editorState}
+              onEditorStateChange={(newState) => setEditorState(newState)}
             />
 
             <input type='string' name='companyName'placeholder='NOME DA EMPRESA'value={companyName} onChange={(e) => setCompanyName(e.target.value)} style={{padding:'5px', margin:'10px'}}/>
