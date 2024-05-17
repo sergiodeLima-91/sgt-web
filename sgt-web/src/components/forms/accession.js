@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import { Page, Text, View, Document, StyleSheet } from '@mikecousins/react-pdf';
-import { Editor } from 'react-draft-wysiwyg';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import { EditorState } from 'draft-js';
+import TextEditor from '../../components/TextEditor';
 
 
-function Accession() {    
-  // Estado do editor de texto:
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+function Accession() {      
   // Estado do formulário:
   const [companyName, setCompanyName] = useState('');
   
@@ -31,11 +27,9 @@ function Accession() {
               display:'flex',
               flexDirection:'column'
           }}>
-            {/* Editor de texto vai aqui */}          
-            <Editor 
-              editorState={editorState}
-              onEditorStateChange={(newState) => setEditorState(newState)}
-            />
+
+            {/* Editor de texto vai aqui */}  
+            <TextEditor />
 
             <input type='string' name='companyName'placeholder='NOME DA EMPRESA'value={companyName} onChange={(e) => setCompanyName(e.target.value)} style={{padding:'5px', margin:'10px'}}/>
             <input type='number' name='cnpj'placeholder='CNPJ'style={{padding:'5px', margin:'10px'}}/>
