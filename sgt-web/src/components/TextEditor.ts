@@ -1,5 +1,5 @@
 import { type } from '@testing-library/user-event/dist/type';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { createEditor } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 import { BaseEditor, Descendant } from 'slate'
@@ -20,11 +20,8 @@ function TextEditor() {
     }
   }
 
-  return(
-    <>
-      
-    </>
-  )
+  return null
+
 }
 
 export default TextEditor
